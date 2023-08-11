@@ -10,11 +10,14 @@ import java.util.List;
 
 //@RestController会自动帮一个对象转换成json的格式
 @RestController
+@RequestMapping("/mzcmsapi/users")
 public class UserController {
     @Autowired
     private UsersService usersService;
-
-    //@RequestMapping("/getUsersList")的意思告诉前端相应的地址访问
+    // 注册用户
+    @RequestMapping("/addUsers")
+    public String  addUsers() {return  usersService.addUsers();}
+    // 获取用户列表
     @RequestMapping("/getUsersList")
     public List<Users> getUsersList(){
         return usersService.findAllUsers();
