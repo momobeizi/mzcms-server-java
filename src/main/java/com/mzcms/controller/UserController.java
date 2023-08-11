@@ -4,11 +4,13 @@ import com.mzcms.commin.lang.Result;
 import com.mzcms.entity.Users;
 import com.mzcms.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import javax.validation.Valid;
 import java.util.List;
 
 //@RestController会自动帮一个对象转换成json的格式
@@ -19,7 +21,10 @@ public class UserController {
     private UsersService usersService;
     // 注册用户
     @RequestMapping("/createUsers")
-    public Result createUsers(@RequestBody Users user) {
+    public Result createUsers(@RequestBody @Valid Users user, BindingResult errors) {
+        if (errors.hasErrors()) {
+            return Result.fail(errors.getFieldError().getDefaultMessage());
+        }
         //检查账号是否重复
         Integer Count = usersService.findUserCount(user);
         if (Count >= 1){
