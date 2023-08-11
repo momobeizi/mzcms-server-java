@@ -5,4 +5,10 @@
     <select id="findAllUsers" resultType="com.mzcms.entity.Users">
         select * from users
     </select>
+    <select id="findUser" resultType="com.mzcms.entity.Users">
+        select * from users where account = #{account}
+    </select>
+    <select id="findUserCount" resultType="java.lang.Integer">
+        select count(*) from users where account = #{account}
+    </select>
 </mapper>

@@ -2,14 +2,16 @@ package com.mzcms.entity;
 
 public class Users {
     private int id;
+    private String account;
     private String userName;
     private String passWord;
     private String nickName;
     private int gender;
     private String picture;
 
-    public Users(int id,String userName,String passWord,String nickName,int gender,String picture){
+    public Users(int id,String account, String userName,String passWord,String nickName,int gender,String picture){
         this.id = id;
+        this.account = account;
         this.userName = userName;
         this.passWord = passWord;
         this.nickName = nickName;
@@ -22,6 +24,13 @@ public class Users {
     }
     public void setId(int id) {
         this.id = id;
+    }
+    // account
+    public String getAccount() {
+        return account;
+    }
+    public void setAccount(String account) {
+        this.account = account;
     }
     // userName
     public String getUserName() {

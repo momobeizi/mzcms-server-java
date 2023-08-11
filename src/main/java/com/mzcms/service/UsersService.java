@@ -2,6 +2,7 @@ package com.mzcms.service;
 
 import com.mzcms.entity.Users;
 import com.mzcms.mapper.UsersMapper;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -15,7 +16,12 @@ public class UsersService {
     @Autowired
     private UsersMapper usersMapper;
 
-    //处理业务逻辑，这里由于业务过于简单，就空着，查询出什么我就返回什么
+    public Integer findUserCount(Users user){
+        return  usersMapper.findUserCount(user.getAccount());
+    }
+    public Users findUser(){
+        return usersMapper.findUser();
+    }
     public List<Users> findAllUsers() {
         return usersMapper.findAllUsers();
     }
