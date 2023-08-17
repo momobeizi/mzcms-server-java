@@ -1,8 +1,8 @@
 package com.mzcms.controller;
 
 import com.mzcms.commin.lang.Result;
-import com.mzcms.entity.Users;
-import com.mzcms.service.UsersService;
+import com.mzcms.entity.User;
+import com.mzcms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,10 +15,10 @@ import java.util.List;
 
 //@RestController会自动帮一个对象转换成json的格式
 @RestController
-@RequestMapping("/mzcmsapi/users")
+@RequestMapping("/mzcmsapi/user")
 public class UserController {
     @Autowired
-    private UsersService usersService;
+    private UserService userService;
     // 注册用户
     @RequestMapping("/createUsers")
     public Result createUsers(@RequestBody @Valid Users user, BindingResult errors) {
@@ -33,8 +33,8 @@ public class UserController {
         return Result.succ(200);
     }
     // 获取用户列表
-    @RequestMapping("/getUsersList")
-    public List<Users> getUsersList(){
-        return usersService.findAllUsers();
+    @RequestMapping("/getUserList")
+    public List<User> getUserList(){
+        return userService.findAllUser();
     }
 }

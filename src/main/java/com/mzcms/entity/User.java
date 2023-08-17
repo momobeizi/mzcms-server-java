@@ -41,7 +41,7 @@ public class Users {
      */
     private String picture;
 
-    public Users(int id,String account, String userName,String passWord,String nickName,int gender,String picture){
+    public User(int id,String account, String userName, String passWord, String nickName, int gender, String picture){
         this.id = id;
         this.account = account;
         this.userName = userName;
