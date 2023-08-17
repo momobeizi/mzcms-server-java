@@ -21,12 +21,12 @@ public class UserController {
     private UserService userService;
     // 注册用户
     @RequestMapping("/createUsers")
-    public Result createUsers(@RequestBody @Valid Users user, BindingResult errors) {
+    public Result createUsers(@RequestBody @Valid User user, BindingResult errors) {
         if (errors.hasErrors()) {
             return Result.fail(errors.getFieldError().getDefaultMessage());
         }
         //检查账号是否重复
-        Integer Count = usersService.findUserCount(user);
+        Integer Count = userService.findUserCount(user);
         if (Count >= 1){
             return Result.fail(("用户名重复"));
         }

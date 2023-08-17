@@ -3,7 +3,7 @@ package com.mzcms.entity;
 import com.mzcms.validation.UserValidationRules;
 import javax.validation.constraints.*;
 
-public class Users {
+public class User {
     /**
      * 主键id
      */
@@ -57,6 +57,7 @@ public class Users {
     public void setId(int id) {
         this.id = id;
     }
+
     // account
     public String getAccount() {
         return account;

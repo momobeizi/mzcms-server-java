@@ -16,10 +16,10 @@ public class UserService {
     private UserMapper userMapper;
 
     public Integer findUserCount(User user){
-        return  usersMapper.findUserCount(user.getAccount());
+        return  userMapper.findUserCount(user.getAccount());
     }
     public User findUser(){
-        return usersMapper.findUser();
+        return userMapper.findUser();
     }
 
     //查询所有用户

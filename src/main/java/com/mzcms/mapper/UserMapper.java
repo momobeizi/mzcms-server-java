@@ -10,6 +10,6 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
     List<User> findAllUser();
-    Users findUser();
+    User findUser();
     Integer findUserCount(@Param("account") String account);
 }
