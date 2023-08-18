@@ -18,12 +18,15 @@ public class UserService {
     public Integer findUserCount(User user){
         return  userMapper.findUserCount(user.getAccount());
     }
+    public  User insertUser(User user) {
+        return  userMapper.insertUser(user);
+    }
     public User findUser(){
         return userMapper.findUser();
     }
 
     //查询所有用户
-    public List<User> findAllUser() {
-        return userMapper.findAllUser();
+    public List<User> findAllUserList() {
+        return userMapper.findAllUserList();
     }
 }

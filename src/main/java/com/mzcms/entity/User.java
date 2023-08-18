@@ -2,6 +2,7 @@ package com.mzcms.entity;
 
 import com.mzcms.validation.UserValidationRules;
 import javax.validation.constraints.*;
+import java.time.LocalDateTime;
 
 public class User {
     /**
@@ -40,8 +41,16 @@ public class User {
      * 头像
      */
     private String picture;
+    /**
+     * 创建时间
+     */
+    private LocalDateTime createdAt;
+    /**
+     * 更新时间
+     */
+    private LocalDateTime updatedAt;
 
-    public User(int id,String account, String userName, String passWord, String nickName, int gender, String picture){
+    public User(int id,String account, String userName, String passWord, String nickName, int gender, String picture, LocalDateTime createdAt, LocalDateTime updatedAt){
         this.id = id;
         this.account = account;
         this.userName = userName;
@@ -49,6 +58,8 @@ public class User {
         this.nickName = nickName;
         this.gender = gender;
         this.picture = picture;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
     // id
     public int getId() {
@@ -100,4 +111,19 @@ public class User {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+    // createdAt
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+    // updatedAt
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
 }

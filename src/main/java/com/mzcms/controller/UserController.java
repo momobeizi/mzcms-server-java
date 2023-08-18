@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
 
 //@RestController会自动帮一个对象转换成json的格式
@@ -20,7 +21,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     // 注册用户
-    @RequestMapping("/createUsers")
+    @RequestMapping("/createUser")
     public Result createUsers(@RequestBody @Valid User user, BindingResult errors) {
         if (errors.hasErrors()) {
             return Result.fail(errors.getFieldError().getDefaultMessage());
@@ -30,11 +31,17 @@ public class UserController {
         if (Count >= 1){
             return Result.fail(("用户名重复"));
         }
+        //赋值初始时间
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        user.setCreatedAt(currentDateTime);
+        user.setUpdatedAt(currentDateTime);
+        //进行插入数据操作
+        userService.insertUser(user);
         return Result.succ(200);
     }
     // 获取用户列表
     @RequestMapping("/getUserList")
     public List<User> getUserList(){
-        return userService.findAllUser();
+        return userService.findAllUserList();
     }
 }

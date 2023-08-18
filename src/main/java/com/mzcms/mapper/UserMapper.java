@@ -9,7 +9,8 @@ import java.util.List;
 @Repository
 @Mapper
 public interface UserMapper {
-    List<User> findAllUser();
+    List<User> findAllUserList();
     User findUser();
     Integer findUserCount(@Param("account") String account);
+    User insertUser(@Param("user") User user);
 }
