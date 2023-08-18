@@ -11,8 +11,8 @@
     <select id="findUserCount" resultType="java.lang.Integer">
         select count(*) from users where account = #{account}
     </select>
-    <select id="insertUser" resultType="java.lang.Integer">
+    <insert id="insertUser">
         insert into users (account, userName, passWord, nickName, gender, picture, createdAt, updatedAt) values (#{user.account}, #{user.userName}, #{user.passWord}, #{user.nickName}, #{user.gender}, #{user.picture}, #{user.createdAt}, #{user.updatedAt});
-    </select>
+    </insert>
 
 </mapper>

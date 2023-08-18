@@ -1,6 +1,7 @@
 package com.mzcms.controller;
 
 import com.mzcms.commin.lang.Result;
+import com.mzcms.entity.Login;
 import com.mzcms.entity.User;
 import com.mzcms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,22 +27,16 @@ public class UserController {
         if (errors.hasErrors()) {
             return Result.fail(errors.getFieldError().getDefaultMessage());
         }
-        //检查账号是否重复
-        Integer Count = userService.findUserCount(user);
-        if (Count >= 1){
-            return Result.fail(("用户名重复"));
-        }
-        //赋值初始时间
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        user.setCreatedAt(currentDateTime);
-        user.setUpdatedAt(currentDateTime);
-        //进行插入数据操作
-        userService.insertUser(user);
-        return Result.succ(200);
+        return userService.createUser(user);
     }
     // 获取用户列表
     @RequestMapping("/getUserList")
     public List<User> getUserList(){
         return userService.findAllUserList();
+    }
+    // 用户登录
+    @RequestMapping("/login")
+    public Result login(Login login){
+        return  userService.login(login);
     }
 }
